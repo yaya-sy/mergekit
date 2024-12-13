@@ -1,1 +1,98 @@
+{
+    "model_type": "whisperlm",
+    "architectures": [
+        "WhisperForCausalLM"
+    ],
+    "pre_weights": [
+        {
+            "name": "model.decoder.embed_tokens.weight",
+            "is_embed": true
+        },
+        {
+            "name": "model.decoder.embed_positions.weight",
+            "is_embed": true
+        }
+    ],
+    "post_weights": [
+        {
+            "name": "model.decoder.layer_norm.weight"
+        },
+        {
+            "name": "proj_out.weight",
+            "is_embed": true,
+            "optional": true,
+            "tied_names": [
+                "model.decoder.embed_tokens.weight"
+            ]
+        }
+    ],
+    "num_layers_config_key": "num_hidden_layers",
+    "layer_templates": {
+        "weights": [
+            {
+                "name": "model.decoder.layers.${layer_index}.self_attn_layer_norm.weight"
+            },
+            {
+                "name": "model.decoder.layers.${layer_index}.encoder_attn_layer_norm.weight"
+            },
+            {
+                "name": "model.decoder.layers.${layer_index}.final_layer_norm.weight"
+            },
+            {
+                "name": "model.decoder.layers.${layer_index}.fc1.weight"
+            },
+            {
+                "name": "model.decoder.layers.${layer_index}.fc2.weight"
+            },
+            {
+                "name": "model.decoder.layers.${layer_index}.fc1.bias"
+            },
+            {
+                "name": "model.decoder.layers.${layer_index}.fc2.bias"
+            },
+            {
+                "name": "model.decoder.layers.${layer_index}.self_attn.k_proj.weight"
+            },
+            {
+                "name": "model.decoder.layers.${layer_index}.self_attn.out_proj.weight"
+            },
+            {
+                "name": "model.decoder.layers.${layer_index}.self_attn.out_proj.bias"
+            },
+            {
+                "name": "model.decoder.layers.${layer_index}.self_attn.q_proj.bias"
+            },
+            {
+                "name": "model.decoder.layers.${layer_index}.self_attn.q_proj.weight"
+            },
+            {
+                "name": "model.decoder.layers.${layer_index}.self_attn.v_proj.bias"
+            },
+            {
+                "name": "model.decoder.layers.${layer_index}.self_attn.v_proj.weight"
+            },
 
+            {
+                "name": "model.decoder.layers.${layer_index}.encoder_attn.k_proj.weight"
+            },
+            {
+                "name": "model.decoder.layers.${layer_index}.encoder_attn.out_proj.weight"
+            },
+            {
+                "name": "model.decoder.layers.${layer_index}.encoder_attn.out_proj.bias"
+            },
+            {
+                "name": "model.decoder.layers.${layer_index}.encoder_attn.q_proj.bias"
+            },
+            {
+                "name": "model.decoder.layers.${layer_index}.encoder_attn.q_proj.weight"
+            },
+            {
+                "name": "model.decoder.layers.${layer_index}.encoder_attn.v_proj.bias"
+            },
+            {
+                "name": "model.decoder.layers.${layer_index}.encoder_attn.v_proj.weight"
+            }
+        ]
+    }
+}
