@@ -18,6 +18,9 @@
             "name": "model.decoder.layer_norm.weight"
         },
         {
+            "name": "model.decoder.layer_norm.bias"
+        },
+        {
             "name": "proj_out.weight",
             "is_embed": true,
             "optional": true,
@@ -33,10 +36,19 @@
                 "name": "model.decoder.layers.${layer_index}.self_attn_layer_norm.weight"
             },
             {
+                "name": "model.decoder.layers.${layer_index}.self_attn_layer_norm.bias"
+            },
+            {
                 "name": "model.decoder.layers.${layer_index}.encoder_attn_layer_norm.weight"
             },
             {
+                "name": "model.decoder.layers.${layer_index}.encoder_attn_layer_norm.bias"
+            },
+            {
                 "name": "model.decoder.layers.${layer_index}.final_layer_norm.weight"
+            },
+            {
+                "name": "model.decoder.layers.${layer_index}.final_layer_norm.bias"
             },
             {
                 "name": "model.decoder.layers.${layer_index}.fc1.weight"
